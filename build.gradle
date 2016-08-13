@@ -27,7 +27,7 @@ jar {
     version = null
     manifest {
         attributes (
-            'Implementation-Version': 'S0.0.1',
+            'Implementation-Version': 'S0.0.2',
             'Main-Class': 'com.squidhq.launcher.Main'
         )
     }

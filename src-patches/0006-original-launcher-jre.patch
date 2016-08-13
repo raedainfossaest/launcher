@@ -1,0 +1,30 @@
+From 3ec82eabc96c14278b5956ab9ec9a09542180e12 Mon Sep 17 00:00:00 2001
+From: SquidHQ <git@squidhq.com>
+Date: Sat, 13 Aug 2016 11:38:05 -0700
+Subject: [PATCH] original launcher jre
+
+
+diff --git a/com/mojang/launcher/OperatingSystem.java b/com/mojang/launcher/OperatingSystem.java
+index 8f54575..5819abd 100644
+--- a/com/mojang/launcher/OperatingSystem.java
++++ b/com/mojang/launcher/OperatingSystem.java
+@@ -35,6 +35,16 @@ public enum OperatingSystem {
+ 
+    public String getJavaDir() {
+       String var1 = System.getProperty("file.separator");
++      if (getCurrentPlatform() == WINDOWS) {
++         File mc64 = new File("C:/Program Files (x86)/Minecraft/runtime/jre-x64/1.8.0_25/bin/javaw.exe");
++         if (mc64.exists()) {
++            return mc64.getAbsolutePath();
++         }
++         File mc86 = new File("C:/Program Files (x86)/Minecraft/runtime/jre-x86/1.8.0_25/bin/javaw.exe");
++         if (mc86.exists()) {
++            return mc86.getAbsolutePath();
++         }
++      }
+       String var2 = System.getProperty("java.home") + var1 + "bin" + var1;
+       return getCurrentPlatform() == WINDOWS && (new File(var2 + "javaw.exe")).isFile()?var2 + "javaw.exe":var2 + "java";
+    }
+-- 
+2.7.4
+
