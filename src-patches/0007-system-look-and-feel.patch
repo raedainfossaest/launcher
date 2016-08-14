@@ -1,0 +1,47 @@
+From b47a6c35755b6400f29a2bb936d9dc7f1fc95336 Mon Sep 17 00:00:00 2001
+From: SquidHQ <git@squidhq.com>
+Date: Sun, 14 Aug 2016 03:30:23 -0700
+Subject: [PATCH] system look and feel
+
+
+diff --git a/com/squidhq/launcher/Main.java b/com/squidhq/launcher/Main.java
+index 335e1e8..7b4b7f7 100644
+--- a/com/squidhq/launcher/Main.java
++++ b/com/squidhq/launcher/Main.java
+@@ -1,9 +1,9 @@
+ package com.squidhq.launcher;
+ 
+-import com.alee.laf.WebLookAndFeel;
+ import com.mojang.launcher.Http;
+ import org.apache.commons.io.FileUtils;
+ 
++import javax.swing.UIManager;
+ import java.io.File;
+ import java.net.Proxy;
+ import java.net.URL;
+@@ -17,7 +17,21 @@ public class Main {
+ 
+ 	public static void main(String[] args) {
+ 		System.out.println("SquidHQ");
+-		WebLookAndFeel.install();
++		try {
++			String lookAndFeel = UIManager.getSystemLookAndFeelClassName();
++			if (lookAndFeel.equals("javax.swing.plaf.metal.MetalLookAndFeel")) {
++				for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
++					if (!info.getClassName().equals("com.sun.java.swing.plaf.gtk.GTKLookAndFeel")) {
++						continue;
++					}
++					lookAndFeel = info.getClassName();
++					break;
++				}
++			}
++			UIManager.setLookAndFeel(lookAndFeel);
++		} catch (Exception exception) {
++			exception.printStackTrace();
++		}
+ 		net.minecraft.launcher.Main.main(args);
+ 		System.out.println("SquidHQ Done");
+ 
+-- 
+2.7.4
+

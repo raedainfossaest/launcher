@@ -27,7 +27,7 @@ jar {
     version = null
     manifest {
         attributes (
-            'Implementation-Version': 'S0.0.2',
+            'Implementation-Version': 'S0.0.3',
             'Main-Class': 'com.squidhq.launcher.Main'
         )
     }
@@ -56,7 +56,6 @@ dependencies {
     compile 'net.sf.jopt-simple:jopt-simple:4.9'
     compile 'com.mojang:authlib:1.5.17'
     compile 'javax.annotation:javax.annotation-api:1.2'
-    compile 'de.sciss:weblaf:2.1.1'
 
     shadow 'com.google.guava:guava:19.0'
     shadow 'org.apache.commons:commons-lang3:3.4'
@@ -67,7 +66,6 @@ dependencies {
     shadow 'net.sf.jopt-simple:jopt-simple:4.9'
     shadow 'com.mojang:authlib:1.5.17'
     shadow 'javax.annotation:javax.annotation-api:1.2'
-    shadow 'de.sciss:weblaf:2.1.1'
 }
 
 
