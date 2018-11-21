@@ -12,7 +12,7 @@ index f4e9887..a181591 100644
  
        while(var5.hasNext()) {
           Library var6 = (Library)var5.next();
-+         if (var6.getName().startsWith("com.mojang") && var6.getName().contains("netty")) {
++         if (var6.getName().startsWith("com.mojang") && (var6.getName().contains("netty") || var6.getName().contains("patchy"))) {
 +            continue;
 +         }
           if(var6.getNatives() == null) {
